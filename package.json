@@ -1,0 +1,42 @@
+{
+  "name": "guessit-game",
+  "version": "1.0.0",
+  "description": "Mobile game developed with HTML5, JS and CSS",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidpa86/guessit-game.git"
+  },
+  "keywords": [
+    "game",
+    "mobile",
+    "HTML5",
+    "JS",
+    "CSS",
+    "Backbone",
+    "React"
+  ],
+  "author": "David Parras",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidpa86/guessit-game/issues"
+  },
+  "homepage": "https://github.com/davidpa86/guessit-game",
+  "devDependencies": {
+    "browser-sync": "^2.10.0",
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "gulp-if": "^2.0.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-react": "^3.1.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-useref": "^3.0.3",
+    "reactify": "^1.1.1",
+    "run-sequence": "^1.1.5",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
