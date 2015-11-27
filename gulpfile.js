@@ -12,11 +12,18 @@ var source = require("vinyl-source-stream");
 var reactify = require('reactify');
 
 gulp.task('browserify', function(){
-  var b = browserify();
+  var files = [
+    "app/js/app.jsx",
+    "app/js/team.js",
+    "app/js/teams.js",
+    "app/js/card.js",
+    "app/js/cards.js"
+  ];
+  var b = browserify(files);
   b.transform(reactify); // use the reactify transform
-  b.add('app/jsx/app.jsx');
+  //b.add('app/jsx/app.jsx');
   return b.bundle()
-    .pipe(source('app.js'))
+    .pipe(source('mainBundle.js'))
     .pipe(gulp.dest('app/js/'));
 });
 
