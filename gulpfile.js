@@ -13,18 +13,13 @@ var reactify = require('reactify');
 
 gulp.task('browserify', function(){
   var files = [
-    "app/js/app.jsx",
-    "app/js/team.js",
-    "app/js/teams.js",
-    "app/js/card.js",
-    "app/js/cards.js"
+    "app/js/main.js"
   ];
   var b = browserify(files);
   b.transform(reactify); // use the reactify transform
-  //b.add('app/jsx/app.jsx');
   return b.bundle()
     .pipe(source('mainBundle.js'))
-    .pipe(gulp.dest('app/js/'));
+    .pipe(gulp.dest('app/js-built/'));
 });
 
 gulp.task("sass", function(){
@@ -34,15 +29,6 @@ gulp.task("sass", function(){
           .pipe(browserSync.reload({ // Compile sass into CSS & auto-inject into browsers
             stream: true
           }));
-});
-
-gulp.task('react', function () {
-    return gulp.src('app/jsx/*.jsx')
-        .pipe(react())
-        .pipe(gulp.dest('app/js'))
-        .pipe(browserSync.reload({ // Compile jsx into js & auto-inject into browsers
-          stream: true
-        }));
 });
 
 gulp.task("browserSync", function() {
@@ -66,11 +52,11 @@ gulp.task('useref', function() {
 
 gulp.task("watch", ["browserSync", "sass"], function(){
     gulp.watch("app/scss/*.scss", ["sass"]);
-    gulp.watch("app/jsx/*.jsx", ["browserify"]);
+    gulp.watch("app/js/**/*.js", ["browserify"]);
 
     gulp.watch("app/css/*.css").on('change', browserSync.reload);
     gulp.watch("app/*.html").on('change', browserSync.reload);
-    gulp.watch("app/js/*.js").on('change', browserSync.reload);
+    gulp.watch("app/js-built/mainBundle.js").on('change', browserSync.reload);
 });
 
 gulp.task('default', function(callback) {
