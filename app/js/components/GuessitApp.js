@@ -4,11 +4,10 @@ var React = require('react');
 
 //Store
 var GuessitStore = require('../stores/GuessitStore.js');
-
 var AppConstants = require('../constants/AppConstants.js');
 
 //Importing React views
-var CounterReact = require('../components/Counter.js');
+var PlayMode = require('../components/PlayMode.js');
 
 var GuessitApp = React.createClass({
   getInitialState: function() {
@@ -22,15 +21,28 @@ var GuessitApp = React.createClass({
   componentWillUnmount: function() {
     GuessitStore.removeChangeListener(this._onChange);
   },
+
   render : function render(){
-    if (this.state.gameState === AppConstants.PLAYING)
+    switch (this.state.gameState)
     {
-      return (<CounterReact/>);
-    }
-    else {
-      return (<div>Timeout!</div>);
+      case AppConstants.playing:
+        return this.renderPlayMode();
+        break;
+      case AppConstants.timeout:
+        return this.renderTimeoutMode();
+        break;
     }
   },
+  renderPlayMode : function renderPlayMode()
+  {
+    return (<PlayMode/>);
+  },
+
+  renderTimeoutMode : function renderTimeoutMode()
+  {
+    return (<div>Timeout!</div>);
+  },
+
   _onChange: function() {
     this.setState(GuessitStore.getState());
   }

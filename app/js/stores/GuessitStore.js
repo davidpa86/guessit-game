@@ -10,12 +10,23 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 var GuessitStore = assign({}, EventEmitter.prototype, {
-  gameState : AppConstants.PLAYING,
+  gameState : AppConstants.playing,
+  cards : ['Smith', 'Iglesias','Sanchez','Rivera'],
 
   getState : function getState(){
     return {
       gameState : this.gameState
     };
+  },
+  getNextCard : function getNextCard()
+  {
+    var card = '';
+    if (this.cards.length > 0)
+    {
+      card = this.cards[0];
+      this.cards.splice(0,1);
+    }
+    return card;
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
@@ -30,8 +41,12 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
-    case AppConstants.TIMEOUT :
-      GuessitStore.gameState = AppConstants.TIMEOUT;
+    case AppConstants.timeout :
+      GuessitStore.gameState = AppConstants.timeout;
+      GuessitStore.emitChange();
+    break;
+
+    case AppConstants.clickNextCard :
       GuessitStore.emitChange();
     break;
   }

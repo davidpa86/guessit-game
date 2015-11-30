@@ -7,7 +7,7 @@ var AppActions = require('../actions/AppActions.js');
 var Counter = React.createClass({
   getInitialState : function ()
   {
-    return {val : 5};
+    return {val : 60};
   },
   update : function update(){
     if (this.state.val === 0)
@@ -28,9 +28,7 @@ var Counter = React.createClass({
   render : function render(){
     return (
       <div>
-        <div id="container-counter">
-          {this.state.val}
-        </div>
+        {this.state.val}
       </div>
     );
   }
