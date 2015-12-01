@@ -5,13 +5,17 @@ var Teams = require('../stores/Teams.js');
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var AppConstants = require('../constants/AppConstants');
+var AppLocalesFn = require('../constants/AppLocales');
 var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
 var GuessitStore = assign({}, EventEmitter.prototype, {
-  gameState : AppConstants.playing,
-  cards : ['Smith', 'Iglesias','Sanchez','Rivera'],
+  gameState : AppConstants.configuration,
+  cards : Cards,
+  teams : Teams,
+  rounds : 0,
+  characters :0,
 
   getState : function getState(){
     return {
@@ -28,6 +32,16 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
     }
     return card;
   },
+  addConfig : function (config)
+  {
+    for (var i=1; i<=config.teams; ++i)
+    {
+      this.teams.create({name : AppLocalesFn('team')+' '+i});
+    }
+    this.rounds = config.rounds;
+    this.characters = config.characters;
+  },
+
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
@@ -47,6 +61,11 @@ AppDispatcher.register(function(action) {
     break;
 
     case AppConstants.clickNextCard :
+      GuessitStore.emitChange();
+    break;
+
+    case AppConstants.configurationDone :
+      GuessitStore.addConfig(action.config);
       GuessitStore.emitChange();
     break;
   }

@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-var ReactDOM = require('react-dom');
 var AppActions = require('../actions/AppActions.js');
 
 var Counter = React.createClass({

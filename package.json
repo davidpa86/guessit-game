@@ -27,6 +27,7 @@
   "homepage": "https://github.com/davidpa86/guessit-game",
   "devDependencies": {
     "backbone": "^1.2.3",
+    "backbone.localstorage": "^1.1.16",
     "browser-sync": "^2.10.0",
     "browserify": "^12.0.1",
     "events": "^1.1.0",

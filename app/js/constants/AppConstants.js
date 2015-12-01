@@ -1,7 +1,9 @@
 module.exports = {
-  timeout : 'TIMEOUT',
-  playing : 'PLAYING',
-  buttonTypeDone : 'DONE',
-  buttonTypeNextCard : 'NEXTCARD',
-  clickNext : 'CLICKNEXT'
+  timeout : '1',
+  playing : '2',
+  configuration : '3',
+  buttonTypeDone : '4',
+  buttonTypeNextCard : '5',
+  clickNext : '6',
+  configurationDone : '7'
 };

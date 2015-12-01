@@ -1,12 +1,10 @@
 var Backbone = require('backbone');
+Backbone.LocalStorage = require("backbone.localstorage");
 var Team = require('./Team.js');
-
-'use strict';
 
 var Teams = Backbone.Collection.extend({
   model : Team,
+  localStorage: new Backbone.LocalStorage('guessit-teams-backbone'),
 });
 
-module.exports = {
-  teams : new Teams()
-};
+module.exports = new Teams();

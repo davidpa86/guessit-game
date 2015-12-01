@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react');
 
 //Store
@@ -8,6 +6,7 @@ var AppConstants = require('../constants/AppConstants.js');
 
 //Importing React views
 var PlayMode = require('../components/PlayMode.js');
+var Configuration = require('../components/ConfigSection.js');
 
 var GuessitApp = React.createClass({
   getInitialState: function() {
@@ -25,17 +24,23 @@ var GuessitApp = React.createClass({
   render : function render(){
     switch (this.state.gameState)
     {
+      case AppConstants.configuration:
+      return this.renderConfigurationMode();
       case AppConstants.playing:
         return this.renderPlayMode();
-        break;
       case AppConstants.timeout:
         return this.renderTimeoutMode();
-        break;
     }
   },
+
   renderPlayMode : function renderPlayMode()
   {
     return (<PlayMode/>);
+  },
+
+  renderConfigurationMode : function renderConfigurationMode()
+  {
+    return (<Configuration/>);
   },
 
   renderTimeoutMode : function renderTimeoutMode()
