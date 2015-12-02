@@ -19,8 +19,7 @@ var AddCharacterMode = React.createClass({
 
   onClick : function onClick ()
   {
-    //TODO:
-    console.log("action add card");
+    AppActions.addCharacter(this.state.newCharacter);
     var character = this.state.character+1;
     var team = this.state.team;
     if (character > this.props.config.characters)
@@ -28,10 +27,9 @@ var AddCharacterMode = React.createClass({
       character = 1;
       team++;
     }
-    if (team >= this.props.config.teams.models.length)
+    if (team >= this.props.config.teams.length)
     {
-      //TODO: Call action
-      console.log("DONE");
+      AppActions.startRound();
     }
     else {
       this.setState({newCharacter: '', team : team, character : character});
@@ -39,9 +37,8 @@ var AddCharacterMode = React.createClass({
   },
 
   render : function render(){
-    //TODO: Send Array of names insteand full collection
-    var team = this.props.config.teams.at(this.state.team);
-    var text = team.get('name') + ', ' + AppLocalesFn('character') + this.state.character + '/' + this.props.config.characters;
+    var teamName = this.props.config.teams[this.state.team];
+    var text = teamName + ', ' + AppLocalesFn('character') + this.state.character + '/' + this.props.config.characters;
     return (
       <div>
         <h3>{text}</h3>

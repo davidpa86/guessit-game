@@ -30,6 +30,10 @@ var locales = {
   'team' : {
     'es' : 'Equipo',
     'en' : 'Team'
+  },
+  'start' : {
+    'es' : 'Empezar',
+    'en' : 'Start'
   }
 };
 

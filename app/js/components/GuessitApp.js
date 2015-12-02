@@ -9,6 +9,7 @@ var PlayMode = require('../components/PlayMode.js');
 var Configuration = require('../components/ConfigSection.js');
 var Configuration = require('../components/ConfigSection.js');
 var AddCharacterMode = require('../components/AddCharacterMode.js');
+var StartRound = require('../components/StartRound.js');
 
 var GuessitApp = React.createClass({
   getInitialState: function() {
@@ -34,12 +35,30 @@ var GuessitApp = React.createClass({
         return this.renderPlayMode();
       case AppConstants.timeout:
         return this.renderTimeoutMode();
+      case AppConstants.gamefinished:
+        return this.renderResults();
+      case AppConstants.startRound:
+        return this.renderStartRound();
     }
   },
 
   renderPlayMode : function renderPlayMode()
   {
     return (<PlayMode/>);
+  },
+
+  renderStartRound : function renderStartRound()
+  {
+    //TODO: Push back current team
+    return (<StartRound/>);
+  },
+
+  renderResults : function renderResults(){
+    return (
+              <div>
+                Resultados
+              </div>
+            );
   },
 
   renderConfigurationMode : function renderConfigurationMode()
@@ -49,11 +68,12 @@ var GuessitApp = React.createClass({
 
   renderTimeoutMode : function renderTimeoutMode()
   {
+    //TODO : Push back current team
     return (<div>Timeout!</div>);
   },
 
   renderAddCharacters : function renderAddCharacters(){
-    var config = {teams : GuessitStore.teams, characters : GuessitStore.characters};
+    var config = {teams : GuessitStore.teams.pluck("name"), characters : GuessitStore.characters};
     return (<AddCharacterMode config={config}/>);
   },
 

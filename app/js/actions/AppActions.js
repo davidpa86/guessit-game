@@ -8,6 +8,12 @@ var AppActions = {
     });
   },
 
+  play : function play(){
+    AppDispatcher.dispatch({
+      actionType : AppConstants.playing
+    });
+  },
+
   clickNextCard : function clickNextCard (){
     AppDispatcher.dispatch({
       actionType : AppConstants.clickNextCard
@@ -18,6 +24,19 @@ var AppActions = {
     AppDispatcher.dispatch({
       actionType : AppConstants.configurationDone,
       config : config
+    });
+  },
+
+  startRound : function startRound(){
+    AppDispatcher.dispatch({
+      actionType : AppConstants.startRound
+    });
+  },
+
+  addCharacter : function addCharacter(character){
+    AppDispatcher.dispatch({
+      actionType : AppConstants.addCharacter,
+      character : character
     });
   }
 };
