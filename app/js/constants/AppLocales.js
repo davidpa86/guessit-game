@@ -15,9 +15,17 @@ var locales = {
     'es' : 'Número de personajes:',
     'en' : 'Number of characters:'
   },
+  'character' : {
+    'es' : 'Personaje',
+    'en' : 'Character'
+  },
   'done' : {
     'es' : 'Hecho',
     'en' : 'Done'
+  },
+  'next' : {
+    'es' : 'Siguiente',
+    'en' : 'Next'
   },
   'team' : {
     'es' : 'Equipo',

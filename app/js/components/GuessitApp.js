@@ -7,6 +7,8 @@ var AppConstants = require('../constants/AppConstants.js');
 //Importing React views
 var PlayMode = require('../components/PlayMode.js');
 var Configuration = require('../components/ConfigSection.js');
+var Configuration = require('../components/ConfigSection.js');
+var AddCharacterMode = require('../components/AddCharacterMode.js');
 
 var GuessitApp = React.createClass({
   getInitialState: function() {
@@ -25,7 +27,9 @@ var GuessitApp = React.createClass({
     switch (this.state.gameState)
     {
       case AppConstants.configuration:
-      return this.renderConfigurationMode();
+        return this.renderConfigurationMode();
+      case AppConstants.addCharacters:
+        return this.renderAddCharacters();
       case AppConstants.playing:
         return this.renderPlayMode();
       case AppConstants.timeout:
@@ -46,6 +50,11 @@ var GuessitApp = React.createClass({
   renderTimeoutMode : function renderTimeoutMode()
   {
     return (<div>Timeout!</div>);
+  },
+
+  renderAddCharacters : function renderAddCharacters(){
+    var config = {teams : GuessitStore.teams, characters : GuessitStore.characters};
+    return (<AddCharacterMode config={config}/>);
   },
 
   _onChange: function() {

@@ -5,5 +5,6 @@ module.exports = {
   buttonTypeDone : '4',
   buttonTypeNextCard : '5',
   clickNext : '6',
-  configurationDone : '7'
+  configurationDone : '7',
+  addCharacters : '8'
 };

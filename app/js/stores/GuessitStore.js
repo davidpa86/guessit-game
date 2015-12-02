@@ -40,6 +40,7 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
     }
     this.rounds = config.rounds;
     this.characters = config.characters;
+    GuessitStore.gameState = AppConstants.addCharacters;
   },
 
   emitChange: function() {
