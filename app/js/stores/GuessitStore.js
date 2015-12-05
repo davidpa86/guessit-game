@@ -17,10 +17,15 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
   rounds : 0,
   characters :0,
   roundCards : null,
+  currentTeam : null,
+  currentCard : null,
+  currentRound : 0,
 
   getState : function getState(){
     return {
-      gameState : this.gameState
+      gameState : this.gameState,
+      currentTeam : null,
+      currentCard : this.currentCard
     };
   },
 
@@ -28,15 +33,22 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
     this.cards.create({name : character});
   },
 
+  startRound : function startRound()
+  {
+    GuessitStore.shuffle();
+    GuessitStore.gameState = AppConstants.startRound;
+    GuessitStore.nextCard();
+  },
+
   roundDone : function roundDone() {
-    this.rounds--;
-    if (this.round === 0)
+    this.currentRound++;
+    if (this.currentRound === this.rounds)
     {
       this.gameState = AppConstants.gamefinished;
-
     }
     else {
-      this.gameState = AppConstants.startRound;
+      this.changeTurnTeam();
+      this.startRound();
     }
   },
 
@@ -46,13 +58,12 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
     for(var j, x, i = this.roundCards.length; i; j = Math.floor(Math.random() * i), x = this.roundCards[--i], this.roundCards[i] = this.roundCards[j], this.roundCards[j] = x);
   },
 
-  getNextCard : function getNextCard()
+  nextCard : function nextCard()
   {
     if (this.roundCards.length > 0)
     {
-      card = this.roundCards[0];
+      this.currentCard = this.roundCards[0];
       this.roundCards.splice(0,1);
-      return card;
     }
     else {
       this.roundDone();
@@ -61,13 +72,39 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
 
   addConfig : function (config)
   {
+    this.rounds = config.rounds;
+    var points = [];
+    for (var j=0; j<this.rounds; ++j)
+    {
+      points.push(0);
+    }
+    this.characters = config.characters;
+    this.gameState = AppConstants.addCharacters;
     for (var i=1; i<=config.teams; ++i)
     {
-      this.teams.create({name : AppLocalesFn('team')+' '+i});
+      this.teams.create({name : AppLocalesFn('team')+' '+i, points : points});
     }
-    this.rounds = config.rounds;
-    this.characters = config.characters;
-    GuessitStore.gameState = AppConstants.addCharacters;
+    this.currentTeam = this.teams.at(0);
+  },
+
+  changeTurnTeam : function()
+  {
+    var team = this.teams.shift();
+    this.teams.push(team);
+    this.currentTeam = this.teams.at(0);
+  },
+
+  timeout : function timeout(){
+    var tempCard = this.roundCards.splice(0,1)[0];
+    this.roundCards.push(tempCard);
+    this.changeTurnTeam();
+    this.gameState = AppConstants.timeout;
+  },
+
+  addPoint : function addPoint(){
+    var points = this.currentTeam.get('points');
+    points[this.currentRound]++;
+    this.currentTeam.set('points', points);
   },
 
   emitChange: function() {
@@ -84,11 +121,13 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function(action) {
   switch(action.actionType) {
     case AppConstants.timeout :
-      GuessitStore.gameState = AppConstants.timeout;
+      GuessitStore.timeout();
       GuessitStore.emitChange();
     break;
 
-    case AppConstants.clickNextCard :
+    case AppConstants.nextCard :
+      GuessitStore.addPoint();
+      GuessitStore.nextCard();
       GuessitStore.emitChange();
     break;
 
@@ -108,8 +147,7 @@ AppDispatcher.register(function(action) {
     break;
 
     case AppConstants.startRound :
-      GuessitStore.shuffle();
-      GuessitStore.gameState = AppConstants.startRound;
+      GuessitStore.startRound();
       GuessitStore.emitChange();
     break;
   }

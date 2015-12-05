@@ -15,9 +15,17 @@ var locales = {
     'es' : 'Número de personajes:',
     'en' : 'Number of characters:'
   },
+  'round' : {
+    'es' : 'Round',
+    'en' : 'Ronda'
+  },
   'character' : {
     'es' : 'Personaje',
     'en' : 'Character'
+  },
+  'turn' : {
+    'es' : 'Turno de %TEAM%',
+    'en' : 'Turn of %TEAM%'
   },
   'done' : {
     'es' : 'Hecho',
@@ -34,6 +42,10 @@ var locales = {
   'start' : {
     'es' : 'Empezar',
     'en' : 'Start'
+  },
+  'timeout' : {
+    'es' : '¡Tiempo!',
+    'en' : 'Timeout!'
   }
 };
 

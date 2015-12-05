@@ -3,19 +3,9 @@ var AppActions = require('../actions/AppActions.js');
 var AppConstants = require('../constants/AppConstants.js');
 
 var Button = React.createClass({
-  onClick : function (){
-    if (this.props.config.type === AppConstants.buttonTypeDone)
-    {
-      AppActions.clickDone();
-    }
-    else if (this.props.config.type === AppConstants.buttonTypeNextCard)
-    {
-      AppActions.clickNextCard();
-    }
-  },
   render : function render(){
     return (
-      <button onClick={this.onClick}>
+      <button disabled={this.props.config.disabled || false} onClick={this.props.config.handler}>
         {this.props.config.name}
       </button>
     );

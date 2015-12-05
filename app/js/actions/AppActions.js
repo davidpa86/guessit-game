@@ -14,9 +14,9 @@ var AppActions = {
     });
   },
 
-  clickNextCard : function clickNextCard (){
+  nextCard : function nextCard (){
     AppDispatcher.dispatch({
-      actionType : AppConstants.clickNextCard
+      actionType : AppConstants.nextCard
     });
   },
 

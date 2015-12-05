@@ -2,6 +2,7 @@ var React = require('react');
 var AppActions = require('../actions/AppActions.js');
 var AppConstants = require('../constants/AppConstants.js');
 var AppLocalesFn = require('../constants/AppLocales.js');
+var Button = require('../components/Button.js');
 
 var AddCharacterMode = React.createClass({
   getInitialState : function ()
@@ -44,7 +45,7 @@ var AddCharacterMode = React.createClass({
         <h3>{text}</h3>
         <input type="text" value={this.state.newCharacter} onChange={this.handleChange}/>
         <br/>
-        <button disabled={!this.state.newCharacter} onClick={this.onClick}>{AppLocalesFn('next')}</button>
+        <Button config={{disabled : !this.state.newCharacter, handler: this.onClick, name : AppLocalesFn('next')}}></Button>
       </div>
     );
   }
