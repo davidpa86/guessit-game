@@ -12,6 +12,7 @@ var Configuration = require('../components/ConfigSection.js');
 var AddCharacterMode = require('../components/AddCharacterMode.js');
 var StartRound = require('../components/StartRound.js');
 var Timeout = require('../components/Timeout.js');
+var ResultsPanel = require('../components/ResultsPanel.js');
 
 var GuessitApp = React.createClass({
   getInitialState: function() {
@@ -30,54 +31,29 @@ var GuessitApp = React.createClass({
     switch (this.state.gameState)
     {
       case AppConstants.configuration:
-        return this.renderConfigurationMode();
+        return (<Configuration/>);
+
       case AppConstants.addCharacters:
-        return this.renderAddCharacters();
+        return (<AddCharacterMode config={{
+                                            teams : GuessitStore.teams.pluck("name"),
+                                            characters : GuessitStore.characters
+                                          }}/>);
+
       case AppConstants.playing:
-        return this.renderPlayMode();
+        return (<PlayMode config={{
+                                    turnText : AppLocalesFn('turn').replace('%TEAM%',GuessitStore.currentTeam.get('name')),
+                                    card : GuessitStore.currentCard
+                                  }}/>);
       case AppConstants.timeout:
-        return this.renderTimeoutMode();
+        return (<Timeout team={GuessitStore.currentTeam.get('name')}/>);
+
       case AppConstants.gamefinished:
-        return this.renderResults();
+        GuessitStore.teams.sort();
+        return (<ResultsPanel teams={GuessitStore.teams}/>);
+
       case AppConstants.startRound:
-        return this.renderStartRound();
+        return (<StartRound team={GuessitStore.currentTeam.get('name')} round={GuessitStore.currentRound}/>);
     }
-  },
-
-  renderPlayMode : function renderPlayMode()
-  {
-    return (<PlayMode config={{
-                                turnText : AppLocalesFn('turn').replace('%TEAM%',GuessitStore.currentTeam.get('name')),
-                                card : GuessitStore.currentCard
-                              }}/>);
-  },
-
-  renderStartRound : function renderStartRound()
-  {
-    return (<StartRound team={GuessitStore.currentTeam.get('name')} round={GuessitStore.currentRound}/>);
-  },
-
-  renderResults : function renderResults(){
-    return (
-              <div>
-                Resultados
-              </div>
-            );
-  },
-
-  renderConfigurationMode : function renderConfigurationMode()
-  {
-    return (<Configuration/>);
-  },
-
-  renderTimeoutMode : function renderTimeoutMode()
-  {
-    return (<Timeout team={GuessitStore.currentTeam.get('name')}/>);
-  },
-
-  renderAddCharacters : function renderAddCharacters(){
-    var config = {teams : GuessitStore.teams.pluck("name"), characters : GuessitStore.characters};
-    return (<AddCharacterMode config={config}/>);
   },
 
   _onChange: function() {

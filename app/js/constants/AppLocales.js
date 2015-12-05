@@ -11,6 +11,10 @@ var locales = {
     'es' : 'Número de rondas:',
     'en' : 'Number of rounds:'
   },
+  'new' : {
+    'es' : 'Nueva Partida',
+    'en' : 'New Game'
+  },
   'characters' : {
     'es' : 'Número de personajes:',
     'en' : 'Number of characters:'
@@ -38,6 +42,10 @@ var locales = {
   'team' : {
     'es' : 'Equipo',
     'en' : 'Team'
+  },
+  'points' : {
+    'es' : 'Puntos',
+    'en' : 'Points'
   },
   'start' : {
     'es' : 'Empezar',

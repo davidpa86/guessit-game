@@ -20,7 +20,6 @@ var ConfigSection = React.createClass({
     return (
       <div>
         <h3>{AppLocalesFn('configuration')}</h3>
-        <br/>
         <NumInput
                   ref="teams"
                   min={1}

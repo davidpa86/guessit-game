@@ -9,5 +9,6 @@ module.exports = {
   gamefinished : '8',
   startRound : '9',
   nextCard : '10',
-  roundDone : '11'
+  roundDone : '11',
+  newGame : '12'
 };

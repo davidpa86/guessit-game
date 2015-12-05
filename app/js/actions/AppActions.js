@@ -33,6 +33,12 @@ var AppActions = {
     });
   },
 
+  restart : function restart(){
+    AppDispatcher.dispatch({
+      actionType : AppConstants.newGame
+    });
+  },
+
   addCharacter : function addCharacter(character){
     AppDispatcher.dispatch({
       actionType : AppConstants.addCharacter,

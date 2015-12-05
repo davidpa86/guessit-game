@@ -15,7 +15,7 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
   cards : Cards,
   teams : Teams,
   rounds : 0,
-  characters :0,
+  characters : 0,
   roundCards : null,
   currentTeam : null,
   currentCard : null,
@@ -27,6 +27,19 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
       currentTeam : null,
       currentCard : this.currentCard
     };
+  },
+
+  restart : function restart()
+  {
+    this.gameState = AppConstants.configuration;
+    this.cards.reset();
+    this.teams.reset();
+    this.rounds = 0;
+    this.characters = 0;
+    this.roundCards = null;
+    this.currentTeam = null;
+    this.currentCard = null;
+    this.currentRound = 0;
   },
 
   addCharacter : function addCharacter(character){
@@ -143,6 +156,11 @@ AppDispatcher.register(function(action) {
 
     case AppConstants.playing :
       GuessitStore.gameState = AppConstants.playing;
+      GuessitStore.emitChange();
+    break;
+
+    case AppConstants.newGame :
+      GuessitStore.restart();
       GuessitStore.emitChange();
     break;
 
