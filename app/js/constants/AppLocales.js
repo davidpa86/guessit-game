@@ -20,8 +20,8 @@ var locales = {
     'en' : 'Number of characters:'
   },
   'round' : {
-    'es' : 'Round',
-    'en' : 'Ronda'
+    'es' : 'Ronda',
+    'en' : 'Round'
   },
   'character' : {
     'es' : 'Personaje',
