@@ -8,9 +8,15 @@ var StartRoundMode = React.createClass({
   render : function render(){
     return (
       <div>
-        <div>{AppLocalesFn('round') + ' '+(this.props.round+1)}</div>
-        <div>{AppLocalesFn('turn').replace('%TEAM%',this.props.team)}</div>
-        <Button config={{handler : AppActions.play, name : AppLocalesFn('start')}}/>
+        <div>
+          <p>{AppLocalesFn('round') + ' '+(this.props.round+1)}</p>
+        </div>
+        <div>
+          <p>{AppLocalesFn('turn').replace('%TEAM%',this.props.team)}</p>
+        </div>
+        <div>
+          <Button config={{handler : AppActions.play, icon : 'fa fa-play'}}/>
+        </div>
       </div>
     );
   }

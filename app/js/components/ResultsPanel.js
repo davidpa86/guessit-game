@@ -37,18 +37,25 @@ var ResultsPanel = React.createClass({
     var rows = points.map(getRows.bind(this));
     return (
       <div>
-        <table>
-          <thead>
-            <tr>
-              <th>{AppLocalesFn('team')}</th>
-              <th>{AppLocalesFn('points')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows}
-          </tbody>
-        </table>
-        <Button config={{handler: AppActions.restart, name : AppLocalesFn('new')}}></Button>
+        <div>
+          <p></p>
+        </div>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>{AppLocalesFn('team')}</th>
+                <th>{AppLocalesFn('points')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <Button config={{handler: AppActions.restart, icon : 'fa fa-refresh'}}></Button>
+        </div>
       </div>
     );
   }

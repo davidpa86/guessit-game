@@ -12,10 +12,16 @@ var PlayMode = React.createClass({
   render : function render(){
     return (
       <div>
-        {this.props.config.turnText}
-        <CounterReact/>
-        <Card name={this.props.config.card}/>
-        <Button config={{handler : AppActions.nextCard, name : AppLocalesFn('next')}}/>
+        <div>
+          {this.props.config.turnText}
+          <CounterReact/>
+        </div>
+        <div>
+          <Card name={this.props.config.card}/>
+        </div>
+        <div>
+          <Button config={{handler : AppActions.nextCard, icon : 'fa fa-check'}}/>
+        </div>
       </div>
     );
   }

@@ -4,6 +4,7 @@ var AppActions = require('../actions/AppActions.js');
 var AppConstants = require('../constants/AppConstants.js');
 var GuessitStore = require('../stores/GuessitStore.js');
 var NumInput = require('../components/NumInput.js');
+var Button = require('../components/Button.js');
 var AppLocalesFn = require('../constants/AppLocales.js');
 
 var ConfigSection = React.createClass({
@@ -19,31 +20,35 @@ var ConfigSection = React.createClass({
   render : function render(){
     return (
       <div>
-        <h3>{AppLocalesFn('configuration')}</h3>
-        <NumInput
-                  ref="teams"
-                  min={1}
-                  max={4}
-                  step={1}
-                  val={2}
-                  label={AppLocalesFn('teams')}
-                  type = "number"/>
-        <NumInput
-                  min={1}
-                  max={10}
-                  step={1}
-                  label={AppLocalesFn('characters')}
-                  val={4}
-                  ref="characters"/>
-        <NumInput
-                  min={1}
-                  max={3}
-                  step={1}
-                  label={AppLocalesFn('rounds')}
-                  val={3}
-                  ref="rounds"/>
-        <br/>
-        <button onClick={this.onClick}><i className="fa fa-check"></i></button>
+        <div>
+          <h3>{AppLocalesFn('configuration')}</h3>
+        </div>
+        <div>
+          <NumInput
+                    ref="teams"
+                    min={1}
+                    max={4}
+                    step={1}
+                    val={2}
+                    label={AppLocalesFn('teams')}/>
+          <NumInput
+                    min={1}
+                    max={10}
+                    step={1}
+                    label={AppLocalesFn('characters')}
+                    val={4}
+                    ref="characters"/>
+          <NumInput
+                    min={1}
+                    max={3}
+                    step={1}
+                    label={AppLocalesFn('rounds')}
+                    val={3}
+                    ref="rounds"/>
+        </div>
+        <div>
+          <Button config={{handler : this.onClick, icon : "fa fa-arrow-right"}}/>
+        </div>
       </div>
     );
   }

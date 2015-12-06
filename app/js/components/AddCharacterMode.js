@@ -42,10 +42,15 @@ var AddCharacterMode = React.createClass({
     var text = teamName + ', ' + AppLocalesFn('character') + ' ' + this.state.character + '/' + this.props.config.characters;
     return (
       <div>
-        <h3>{text}</h3>
-        <input type="text" value={this.state.newCharacter} onChange={this.handleChange}/>
-        <br/>
-        <Button config={{disabled : !this.state.newCharacter, handler: this.onClick, name : AppLocalesFn('next')}}></Button>
+        <div>
+          <h3>{text}</h3>
+        </div>
+        <div>
+          <input type="text" value={this.state.newCharacter} onChange={this.handleChange}/>
+        </div>
+        <div>
+          <Button config={{disabled : !this.state.newCharacter, handler: this.onClick, icon : "fa fa-arrow-right"}}/>
+        </div>
       </div>
     );
   }

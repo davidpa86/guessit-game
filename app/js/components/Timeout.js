@@ -8,9 +8,15 @@ var Timeout = React.createClass({
   render : function render(){
     return (
       <div>
-        <h3>{AppLocalesFn('timeout')}</h3>
-        <div>{AppLocalesFn('turn').replace('%TEAM%',this.props.team)}</div>
-        <Button config={{handler : AppActions.play, name : AppLocalesFn('start')}}/>
+        <div>
+          <h3>{AppLocalesFn('timeout')}</h3>
+        </div>
+        <div>
+          <p>{AppLocalesFn('turn').replace('%TEAM%',this.props.team)}</p>
+        </div>
+        <div>
+          <Button config={{handler : AppActions.play, icon : 'fa fa-play'}}/>
+        </div>
       </div>
     );
   }
