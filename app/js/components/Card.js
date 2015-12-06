@@ -6,8 +6,10 @@ var GuessitStore = require('../stores/GuessitStore.js');
 var Card = React.createClass({
   render : function render(){
     return (
-              <div>
-                {this.props.name}
+              <div className='paper'>
+                <div className='paper-content'>
+                  <p>{this.props.name}</p>
+                </div>
               </div>
             );
   }
