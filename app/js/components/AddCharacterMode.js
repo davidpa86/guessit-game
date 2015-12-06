@@ -39,7 +39,7 @@ var AddCharacterMode = React.createClass({
 
   render : function render(){
     var teamName = this.props.config.teams[this.state.team];
-    var text = teamName + ', ' + AppLocalesFn('character') + this.state.character + '/' + this.props.config.characters;
+    var text = teamName + ', ' + AppLocalesFn('character') + ' ' + this.state.character + '/' + this.props.config.characters;
     return (
       <div>
         <h3>{text}</h3>

@@ -43,7 +43,7 @@ var ConfigSection = React.createClass({
                   val={3}
                   ref="rounds"/>
         <br/>
-        <button onClick={this.onClick}>{AppLocalesFn('done')}</button>
+        <button onClick={this.onClick}><i className="fa fa-check"></i></button>
       </div>
     );
   }

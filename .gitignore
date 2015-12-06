@@ -2,3 +2,4 @@ node_modules/
 dist/
 app/js-built
 app/css-built
+app/bower_components

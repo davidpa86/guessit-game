@@ -1,0 +1,30 @@
+{
+  "name": "guessit-game",
+  "version": "1.0.0",
+  "homepage": "https://github.com/davidpa86/guessit-game",
+  "authors": [
+    "David Parras <parrasdavid@gmail.com>"
+  ],
+  "description": "Mobile game developed with HTML5, JS and CSS",
+  "main": "app/index.js",
+  "keywords": [
+    "game",
+    "mobile",
+    "HTML5",
+    "JS",
+    "CSS",
+    "Backbone",
+    "React"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "fontawesome": "~4.5.0"
+  }
+}
