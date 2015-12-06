@@ -1,0 +1,15 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+body {
+  background-color : $light-blue;
+}
+
+
+button {
+  @include rounded_borders()
+}
+
+input {
+  @include rounded_borders()
+}

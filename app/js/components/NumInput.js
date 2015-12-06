@@ -1,7 +1,13 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var AppActions = require('../actions/AppActions.js');
 
 var NumInput = React.createClass({
+  getInitialState : function (){
+    return {
+      value : this.props.val
+    };
+  },
   propTypes : {
     min : React.PropTypes.number,
     max : React.PropTypes.number,
@@ -20,10 +26,15 @@ var NumInput = React.createClass({
       type : "range"
     };
   },
+  onChange : function ()
+  {
+    var val = parseInt(ReactDOM.findDOMNode(this.refs.sliderInput).value);
+    this.setState({value : val});
+  },
   render : function render(){
     return (
       <div>
-        {this.props.label}
+        {this.props.label}{this.state.value}
         <br/>
         <input
                 ref="sliderInput"
@@ -31,6 +42,7 @@ var NumInput = React.createClass({
                 min={this.props.min}
                 max={this.props.max}
                 step={this.props.step}
+                onChange={this.onChange}
                 defaultValue={this.props.val}/>
       </div>
     );

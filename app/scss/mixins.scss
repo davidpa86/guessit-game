@@ -1,0 +1,9 @@
+@import "./variables.scss";
+
+@mixin rounded_borders($color: #000000, $width: 1px, $rounding: 5px) {
+-moz-border-radius: $rounding $rounding;
+-webkit-border-radius: $rounding $rounding;
+-khtml-border-radius: $rounding $rounding;
+-o-border-radius: $rounding $rounding;
+border-radius: $rounding $rounding;
+border: $width $color solid; }
