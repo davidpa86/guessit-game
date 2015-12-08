@@ -19,9 +19,14 @@ var ResultsPanel = React.createClass({
         text += array[i];
         sum += array[i];
       }
+      var row;
       if (array.length > 1)
       {
-        text += ' = '+sum;
+        text += ' = ';
+        row = <span>{text} <b>{sum}</b></span>;
+      }
+      else {
+        row = <span><b>{sum}</b></span>;
       }
       return (
         <tr key={ index }>
@@ -29,7 +34,7 @@ var ResultsPanel = React.createClass({
             {this.props.teams.at(index).get('name')}
           </td>
           <td>
-            {text}
+            {row}
           </td>
         </tr>
       );
@@ -38,7 +43,7 @@ var ResultsPanel = React.createClass({
     return (
       <div>
         <div>
-          <p></p>
+          <h2>{AppLocalesFn('result')}</h2>
         </div>
         <div>
           <table>

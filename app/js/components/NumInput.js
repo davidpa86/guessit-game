@@ -34,8 +34,7 @@ var NumInput = React.createClass({
   render : function render(){
     return (
       <div>
-        {this.props.label}{this.state.value}
-        <br/>
+        <h3>{this.props.label} {this.state.value}</h3>
         <input
                 ref="sliderInput"
                 type={this.props.type}

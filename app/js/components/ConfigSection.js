@@ -21,7 +21,7 @@ var ConfigSection = React.createClass({
     return (
       <div>
         <div>
-          <h3>{AppLocalesFn('configuration')}</h3>
+          <h2>{AppLocalesFn('configuration')}</h2>
         </div>
         <div>
           <NumInput

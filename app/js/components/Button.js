@@ -6,13 +6,13 @@ var Button = React.createClass({
   render : function render(){
     var content;
     if (this.props.config.icon) {
-      content = <i className={this.props.config.icon}></i>;
+      content = <span className={this.props.config.icon}></span>;
     }
     else {
       content = this.props.config.name || '';
     }
     return (
-      <button disabled={this.props.config.disabled || false} onClick={this.props.config.handler}>
+      <button className={this.props.config.class || ''} disabled={this.props.config.disabled || false} onClick={this.props.config.handler}>
         {content}
       </button>
     );

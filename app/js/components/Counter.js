@@ -23,8 +23,13 @@ var Counter = React.createClass({
     clearInterval(this.intervalFn);
   },
   render : function render(){
+    var className = 'counter';
+    if (this.state.val <= 5)
+    {
+      className += ' red-text';
+    }
     return (
-      <div>
+      <div className={className}>
         {this.state.val}
       </div>
     );

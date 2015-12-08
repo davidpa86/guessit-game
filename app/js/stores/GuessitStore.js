@@ -108,8 +108,8 @@ var GuessitStore = assign({}, EventEmitter.prototype, {
   },
 
   timeout : function timeout(){
-    var tempCard = this.roundCards.splice(0,1)[0];
-    this.roundCards.push(tempCard);
+    this.roundCards.push(this.currentCard);
+    this.nextCard();
     this.changeTurnTeam();
     this.gameState = AppConstants.timeout;
   },

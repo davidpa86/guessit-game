@@ -54,6 +54,14 @@ var locales = {
   'timeout' : {
     'es' : '¡Tiempo!',
     'en' : 'Timeout!'
+  },
+  'textPlaceHolder' : {
+    'es' : 'Escribe un presonaje...',
+    'en' : 'Add a character...'
+  },
+  'result' : {
+    'es' : 'Resultado final',
+    'en' : 'Final result'
   }
 };
 

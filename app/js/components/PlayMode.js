@@ -12,15 +12,15 @@ var PlayMode = React.createClass({
   render : function render(){
     return (
       <div>
-        <div>
+        <h2>
           {this.props.config.turnText}
-          <CounterReact/>
-        </div>
+        </h2>
         <div>
+          <CounterReact/>
           <Card name={this.props.config.card}/>
         </div>
         <div>
-          <Button config={{handler : AppActions.nextCard, icon : 'fa fa-check'}}/>
+          <Button config={{handler : AppActions.nextCard, class: 'green-button', icon : 'fa fa-check'}}/>
         </div>
       </div>
     );

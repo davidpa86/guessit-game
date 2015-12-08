@@ -1,9 +1,49 @@
 @import "./variables.scss";
 
-@mixin rounded_borders($color: #000000, $width: 1px, $rounding: 5px) {
+@mixin rounded_borders($color: #000000, $width: 1px, $rounding: 10px) {
 -moz-border-radius: $rounding $rounding;
 -webkit-border-radius: $rounding $rounding;
 -khtml-border-radius: $rounding $rounding;
 -o-border-radius: $rounding $rounding;
 border-radius: $rounding $rounding;
 border: $width $color solid; }
+
+@mixin margins($before: 1em, $after: 1em, $start: 0px, $end: 0px){
+  -webkit-margin-before: $before;
+  -moz-margin-before: $before;
+  -khtml-margin-before: $before;
+  -o-margin-before: $before;
+  -webkit-margin-after: $after;
+  -moz-margin-after: $after;
+  -khtml-margin-after: $after;
+  -o-margin-after: $after;
+  -webkit-margin-start: $start;
+  -moz-margin-start: $start;
+  -khtml-margin-start: $start;
+  -o-margin-start: $start;
+  -webkit-margin-end: $end;
+  -moz-margin-end: $end;
+  -khtml-margin-end: $end;
+  -o-margin-end: $end;
+  margin-before: $before;
+  margin-after: $after;
+  margin-start: $start;
+  margin-end: $end;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Oleo Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oleo Script'), local('OleoScript-Regular'), url(http://fonts.gstatic.com/s/oleoscript/v5/_weQNDK6Uf40CiGFKBBUjiYE0-AqJ3nfInTTiDXDjU4.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Oleo Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oleo Script'), local('OleoScript-Regular'), url(http://fonts.gstatic.com/s/oleoscript/v5/_weQNDK6Uf40CiGFKBBUjo4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
