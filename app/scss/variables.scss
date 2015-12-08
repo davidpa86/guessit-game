@@ -11,11 +11,12 @@ $height-medium: 250px;
 $height-small: 200px;
 
 $paper-font-size-big: 60px;
-$paper-font-size-medium: 40px;
+$paper-font-size-medium: 50px;
 $paper-font-size-small: 20px;
 
 $break-small: 320px;
 $break-large: 1024px;
+$font-content: "Comic Sans MS", Helvetica, sans-serif, cursive;
 
 @mixin respond-to($media) {
   @if $media == handhelds {
